@@ -157,7 +157,28 @@
         .chat-btn{
             text-decoration: dashed;
         }
-
+        div input:nth-child(2){
+            margin-left: 1%;
+            padding: 0.2rem 0.2rem;
+            width: 10%;
+            border: 1px solid black;
+            font-size: 120%;
+            border-radius: 1cap;
+        }
+        div input:nth-child(4){
+            size: 100cap;
+            border-radius: 1cap;
+            margin-top: 40%;
+            font-size: 120%;
+            padding: 0.2rem 0.2rem;
+            width: 70%;
+            border: 1px solid black;
+        }
+      div .submit-btn{
+         border-radius: 1cap;
+         font-size: 120%;
+         padding: 0.2rem 0.2rem;
+      }
         @keyframes slideDown {
             from {
                 opacity: 0;
