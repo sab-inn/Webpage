@@ -130,6 +130,7 @@
         }
 
         .projects {
+            position: relative;
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -142,12 +143,31 @@
             margin-bottom: 30px;
             color: #667eea;
         }
+        .projects a {
+            font-size: 0;
+        }
 
+        .projects a::after {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 10px;
+            border-radius: 0.9rem;
+            content: "Chat Room";
+            font-size: 20px;
+            font-weight:500;
+        }
+
+        .projects a:hover::after {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            content: "Anonymous Chats";
+        }
         .projects p {
+            margin-top: 15px;
             color: #999;
             font-style: italic;
         }
-
+        
         footer {
             text-align: center;
             color: white;
