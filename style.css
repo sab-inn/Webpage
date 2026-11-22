@@ -157,27 +157,26 @@
         .chat-btn{
             text-decoration: dashed;
         }
-        div input:nth-child(2){
-            margin-left: 1%;
-            padding: 0.2rem 0.2rem;
-            width: 10%;
-            border: 1px solid black;
-            font-size: 120%;
-            border-radius: 1cap;
-        }
-        div input:nth-child(4){
-            size: 100cap;
-            border-radius: 1cap;
-            margin-top: 40%;
-            font-size: 120%;
-            padding: 0.2rem 0.2rem;
+        textarea{
             width: 70%;
-            border: 1px solid black;
+            background-color: #1a1313;
+            resize: none;
+            border: 2px solid rgb(49, 9, 9);
+            border-radius: 5px;
+            font-size: larger;
+            color: white;
+            padding-right: 3%;
         }
-      div .submit-btn{
-         border-radius: 1cap;
-         font-size: 120%;
-         padding: 0.2rem 0.2rem;
+      div #submit-btn{
+        width: 4%;
+        font-size: 150%;
+        cursor: pointer;
+        border-radius: 1cap;
+        background-color: skyblue;
+        position: absolute;
+        right: 18rem;
+        top: 0.2cap;
+        color: white;
       }
         @keyframes slideDown {
             from {
