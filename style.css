@@ -155,23 +155,56 @@
             opacity: 0.9;
         }
         
+        
+       #comments-feed {
+    width: min(calc(100% - 30px), 700px);
+    margin: 20px auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    height: calc(100dvh - 170px);
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+        .comment {
+            background: #8b7575;
+            padding: 15px;
+            border: 1px solid rgb(49, 9, 9);
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .comment p {
+            margin: 0 0 10px;
+            white-space: pre-wrap;
+        }
+
+        .comment small {
+            color: #999;
+        }
+
         .user-comment {
-            position: relative;
-            width: min(100% - 30px, 700px);
-            margin-inline: auto;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(calc(100% - 30px), 700px);
         }
 
         textarea {
+            display: block;
             width: 100%;
-            min-height: 100px;
-            background-color: #1a1313;
+            min-height: 80px;
+            background: #1a1313;
             resize: none;
             border: 2px solid rgb(49, 9, 9);
             border-radius: 12px;
             font-size: 16px;
             color: white;
             padding: 15px 55px 15px 15px;
-            display: block;
         }
 
         #submit-btn {
@@ -180,13 +213,18 @@
             bottom: 10px;
             width: 35px;
             height: 35px;
-            font-size: 22px;
-            cursor: pointer;
             border: none;
             border-radius: 50%;
-            background-color: skyblue;
+            background: skyblue;
             color: white;
+            font-size: 22px;
+            cursor: pointer;
         }
+
+#submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
         @keyframes slideDown {
             from {
                 opacity: 0;

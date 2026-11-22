@@ -1,15 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Chat</title>
 </head>
 <body>
-  <div class="user-comment">
-    <textarea name="comment" id="comment" placeholder="Write a comment..."></textarea>
-    <button id="submit-btn">↑</button>
-</div>>
+    <div id="comments-feed"></div>
+
+    <div class="user-comment">
+        <textarea
+            name="comment"
+            id="comment"
+            placeholder="Write anything..."
+        ></textarea>
+
+        <button id="submit-btn">↑</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="comment.js"></script>
 </body>
 </html>
