@@ -1,4 +1,4 @@
-
+import { createHmac } from "node:crypto";
 export default async function handler(req, res) {
 
     if (req.method !== "POST") {
@@ -47,6 +47,50 @@ export default async function handler(req, res) {
         if (!result.success) {
             return res.status(403).json({
                 error: "Cloudflare verification failed."
+            });
+                }
+        const ip = req.headers["cf-connecting-ip"];
+
+        if (!ip) {
+            return res.status(400).json({
+                error: "Could not identify visitor IP."
+            });
+        }
+
+        // Generate HMAC-SHA256 hash
+        const ipHash = createHmac(
+            "sha256",
+            process.env.IP_HASH_SECRET
+        )
+        .update(ip.trim())
+        .digest("hex");
+        // Store visitor IP
+        const visitorResponse = await fetch(
+            `${process.env.SUPABASE_URL}/rest/v1/visitor_ips?on_conflict=ip_hash`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "apikey": process.env.SUPABASE_SERVICE_ROLE_KEY,
+                    "Authorization": `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+                    "Prefer": "resolution=merge-duplicates,return=minimal"
+                },
+                body: JSON.stringify({
+                    ip_hash: ipHash,
+                    ip_address: ip.trim(),
+                    last_seen: new Date().toISOString()
+                })
+            }
+        );
+
+        if (!visitorResponse.ok) {
+            console.error(
+                "Visitor storage error:",
+                await visitorResponse.text()
+            );
+
+            return res.status(500).json({
+                error: "Visitor storage failed."
             });
         }
 
